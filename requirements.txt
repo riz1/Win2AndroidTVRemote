@@ -1,0 +1,2 @@
+androidtvremote2>=0.3.2
+zeroconf>=0.151
