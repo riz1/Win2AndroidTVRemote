@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+
+android {
+    namespace 'com.tvremote.app'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.tvremote.app'
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+        ndk { abiFilters 'arm64-v8a', 'x86_64' }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+chaquopy {
+    defaultConfig {
+        version '3.12'
+        if (System.getenv('TVREMOTE_BUILD_PYTHON')) {
+            buildPython System.getenv('TVREMOTE_BUILD_PYTHON')
+        }
+        pip {
+            install 'androidtvremote2==0.3.2'
+            install 'cryptography==42.0.8'
+            install 'cffi==1.17.1'
+            install 'protobuf==5.29.5'
+            install 'aiofiles==24.1.0'
+        }
+    }
+}

@@ -4,3 +4,8 @@ __pycache__/
 build/
 dist/
 *.spec
+android/.gradle/
+android/local.properties
+android/app/build/
+android/build/
+android/.signing/
